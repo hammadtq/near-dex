@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <style>
+    .App-header {
+      background-image: url('https://nearprotocol.com/wp-content/uploads/2019/03/illo-developers.svg');
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #25282A;
+      text-align: center;
+      padding:2%;
+    }
+    .image-wrapper {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+      pointer-events: none;
+    }
+
+    .margin-logo {
+      margin: 20px;
+    }
+
+    @keyframes App-logo-spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    button {
+      font-size: 2.5rem;
+      padding: 15px;
+      color: #0072CE;
+      border-radius: 20px;
+      border: 3px solid #0072CE;
+    }
+
+    button:hover {
+      cursor: pointer;
+      color: white;
+      background: #0072CE;
+    }
+
+    .speech {
+      font-size: 1.5rem;
+      color: #0072CE;
+      text-shadow: 1px 1px #D1CCBD;
+    }
+
+    .status {
+      font-size: 1.5rem;
+      color: rgb(206, 82, 0);
+      text-shadow: 1px 1px #D1CCBD;
+    }
+
+    .balances {
+      font-size: 1.2rem;
+      color: rgb(252, 157, 3);
+      
+    }
+  </style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body class="App-header">
+  <div>
+      <div class="image-wrapper">
+          <div class="k-header__brand k-grid__item" id="k_header_brand">
+              <h1 style="color:red">Near DEX</h1>
+          </div>
+        <h1>Fun Token - ETHB Orderbook</h1>
+        <p id="speech" class="status"></p>
+        <p id="orders" class="speech"></p>
+        <p id="token-balance" class="balances"></p>
+        <p id="ethb-balance" class="balances"></p>
+      </div>
+      <div id="deposit-modal">
+        <button id="deposit-token-balance" data-toggle="modal" data-target="#balanceModal">Deposit Tokens In Orderbook</button>
+      
+          <button id="sell-button" data-toggle="modal" data-target="#sellModal">Add Sell Order</button>
+       
+          <button id="sell-button" data-toggle="modal" data-target="#buyModal">Add Buy Order</button>
+        </div>
+        <p>&nbsp;</p>
+      <div id="signed-out-flow" class="d-none">
+        <button id="sign-in-button" >Sign-in with NEAR</button>
+      </div>
+      <div id="signed-in-flow" class="d-none">
+          <button id="sign-out-button" >Sign-out</button>
+      </div>
+
+      
+  
+    
+  <div class="modal" id="balanceModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title"><span id="tokenBalanceTitleInModal"></span></h4>
+          <button type="button" class="close" data-dismiss="modal"></button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form action="" id="balanceModalForm" autocomplete="off">
+            <input autocomplete="false" name="hidden" type="text" style="display:none;">
+            <div class="form-group">
+              <label for="tokenAddress">Deposit Fun Token:</label>
+              <input type="number" class="form-control" id="depositFunBalanceAmount" step="any">
+              <button type="submit" id="depositFunToken" class="btn btn-primary">Deposit</button>
+            </div>
+          </form>
+
+          <form action="" id="balanceModalForm" autocomplete="off">
+            <input autocomplete="false" name="hidden" type="text" style="display:none;">
+            <div class="form-group">
+              <label for="tokenAddress">Deposit ETHB:</label>
+              <input type="number" class="form-control" id="depositEthBBalanceAmount" step="any">
+              <button type="submit" id="depositETHB" class="btn btn-primary">Deposit</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal" id="sellModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+  
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title"><span id="tokenBalanceTitleInModal"></span></h4>
+            <button type="button" class="close" data-dismiss="modal"></button>
+          </div>
+  
+          <!-- Modal body -->
+          <div class="modal-body">
+            <form action="" id="balanceModalForm" autocomplete="off">
+              <input autocomplete="false" name="hidden" type="text" style="display:none;">
+              <div class="form-group">
+                <label for="tokenAddress">Sell Order (FUN -> ETHB) :</label>
+                <input type="number" class="form-control" id="sellOrderAmount" step="any">
+                <button type="submit" id="addSellOrder" class="btn btn-primary">Add Sell Order</button>
+              </div>
+            </form>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="buyModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+  
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title"><span id="tokenBalanceTitleInModal"></span></h4>
+            <button type="button" class="close" data-dismiss="modal"></button>
+          </div>
+  
+          <!-- Modal body -->
+          <div class="modal-body">
+            <form action="" id="balanceModalForm" autocomplete="off">
+              <input autocomplete="false" name="hidden" type="text" style="display:none;">
+              <div class="form-group">
+                <label for="tokenAddress">Buy Order (ETHB -> FUN) :</label>
+                <input type="number" class="form-control" id="buyOrderAmount" step="any">
+                <button type="submit" id="addBuyOrder" class="btn btn-primary">Add Buy Order</button>
+              </div>
+            </form>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+
+  <script src="./main.js"></script>
+  <script>
+  $( "#depositFunToken, #depositETHB" ).click(async function() {
+    event.preventDefault();
+    console.log(this.id);
+    
+    console.log($("#depositFunBalanceAmount").val())
+    if(this.id == "depositFunToken"){
+      window.depositFunTokenBalance($("#depositFunBalanceAmount").val());
+    }else{
+      window.depositETHBTokenBalance($("#depositEthBBalanceAmount").val());
+    }
+    $('#balanceModal').remove();
+    $(".modal-backdrop").remove();
+  });
+
+  $( "#addSellOrder, #addBuyOrder").click(async function() {
+    event.preventDefault();
+    console.log(this.id);
+    console.log($("#buyOrderAmount").val())
+    if(this.id == "addSellOrder"){
+      window.setTrade($("#sellOrderAmount").val(), "FUN");
+      $('#sellModal').remove();
+      $(".modal-backdrop").remove();
+    }else{
+      window.setTrade($("#buyOrderAmount").val(), "ETHB");
+      $('#buyModal').remove();
+      $(".modal-backdrop").remove();
+    }
+  });
+
+  $(document).ready(async function($) {
+    window.getNearOrderBookBalance();
+    window.getETHBBookBalance();
+    window.getTrades();
+  });
+  </script>
+</body>
+</html>

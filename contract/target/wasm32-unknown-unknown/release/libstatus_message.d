@@ -1,0 +1,1 @@
+/Users/hammadtariq/workspace/ethdenver2020/plain-app-rust/contract/target/wasm32-unknown-unknown/release/libstatus_message.rlib: /Users/hammadtariq/workspace/ethdenver2020/plain-app-rust/contract/src/lib.rs

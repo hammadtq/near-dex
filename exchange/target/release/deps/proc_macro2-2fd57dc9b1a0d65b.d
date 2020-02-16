@@ -1,0 +1,10 @@
+/Users/hammadtariq/workspace/ethdenver2020/myproject/near-bindgen/examples/fun-token/target/release/deps/proc_macro2-2fd57dc9b1a0d65b.rmeta: /Users/hammadtariq/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.8/src/lib.rs /Users/hammadtariq/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.8/src/strnom.rs /Users/hammadtariq/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.8/src/fallback.rs /Users/hammadtariq/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.8/src/wrapper.rs
+
+/Users/hammadtariq/workspace/ethdenver2020/myproject/near-bindgen/examples/fun-token/target/release/deps/libproc_macro2-2fd57dc9b1a0d65b.rlib: /Users/hammadtariq/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.8/src/lib.rs /Users/hammadtariq/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.8/src/strnom.rs /Users/hammadtariq/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.8/src/fallback.rs /Users/hammadtariq/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.8/src/wrapper.rs
+
+/Users/hammadtariq/workspace/ethdenver2020/myproject/near-bindgen/examples/fun-token/target/release/deps/proc_macro2-2fd57dc9b1a0d65b.d: /Users/hammadtariq/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.8/src/lib.rs /Users/hammadtariq/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.8/src/strnom.rs /Users/hammadtariq/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.8/src/fallback.rs /Users/hammadtariq/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.8/src/wrapper.rs
+
+/Users/hammadtariq/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.8/src/lib.rs:
+/Users/hammadtariq/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.8/src/strnom.rs:
+/Users/hammadtariq/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.8/src/fallback.rs:
+/Users/hammadtariq/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.8/src/wrapper.rs:

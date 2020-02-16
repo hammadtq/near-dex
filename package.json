@@ -1,0 +1,48 @@
+{
+  "name": "plain-app-rust",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "npm run build:contract && npm run build:web",
+    "build:contract": "cd contract && ./build.sh",
+    "build:web": "parcel build src/index.html --public-url ./",
+    "dev:deploy:contract": "near dev-deploy --wasmFile ./cross-contract-high-level/res/cross_contract_high_level.wasm",
+    "dev:deploy:account": "near create_account ethb --masterAccount=dev-1581787982403  --initialBalance 0.1",
+    "dev:deploy:cross_contract": "near dev-deploy --accountId=cross_contract --wasmFile ./cross-contract-high-level/res/cross_contract_high_level.wasm",
+    "dev:deploy:status_message": "near dev-deploy --accountId=status_message --wasmFile ./cross-contract-high-level/res/status_message.wasm",
+    "dev:deploy:fun_token": "near deploy --accountId=fun_token2 --wasmFile ./fun-token/res/fun_token.wasm",
+    "dev:deploy:ethb_token": "near deploy --accountId=ethb --wasmFile ./fun-token/res/fun_token.wasm",
+    "dev:deploy:exchange_contract": "near deploy --accountId=exchange1 --wasmFile ./exchange/res/exchange.wasm",
+    "dev:deploy:exchange_contract_init": "near call exchange1 DepositEthB \"{\"owner_id\":\"dev-1581787982403\",\"add_balance\": 2700000000000}\" --accountId=dev-1581787982403",
+    "dev:deploy:cross_contract_state": "near state cross_contract",
+    "dev:deploy:status_message_state": "near state status_message",
+    "dev:deploy:cross_to_status_transfer_money": "near call cross_contract transfer_money \"{\"account_id\": \"status_message\", \"amount\":0.2}\" --accountId=dev-1581787982403",
+    "dev:deploy:cross_to_status_simple_call": "near call cross_contract simple_call \"{\"account_id\": \"status_message\", \"message\":\"bonjour\"}\" --accountId=dev-1581787982403 --gas 10000000000000000000",
+    "deploy:contract": "near deploy --wasmFile ./contract/res/status_message.wasm",
+    "deploy:pages": "gh-pages -d dist/",
+    "deploy": "npm run build && npm run deploy:contract && npm run deploy:pages",
+    "prestart": "npm run build:contract && npm run dev:deploy:contract",
+    "start": "CONTRACT_NAME=$(cat neardev/dev-account) parcel src/index.html",
+    "dev": "nodemon --watch assembly -e ts --exec 'npm run start'",
+    "test": "cd contract && cargo test --package status-message -- --nocapture"
+  },
+  "devDependencies": {
+    "gh-pages": "^2.2.0",
+    "gulp": "^4.0.2",
+    "jest": "^25.1.0",
+    "jest-environment-node": "^24.9.0",
+    "near-bindgen-as": "^1.2.0",
+    "near-runtime-ts": "^0.5.2",
+    "near-shell": "^0.20.1",
+    "nodemon": "^2.0.2",
+    "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "datatables.net": "^1.10.20",
+    "datatables.net-autofill": "^2.3.4",
+    "datatables.net-bs4": "^1.10.20",
+    "datatables.net-buttons": "^1.6.1",
+    "datatables.net-responsive": "^2.2.3",
+    "nearlib": "^0.21.0",
+    "regenerator-runtime": "^0.13.3"
+  }
+}
