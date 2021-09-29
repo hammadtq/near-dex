@@ -37,7 +37,7 @@
     "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
-    "datatables.net": "^1.10.20",
+    "datatables.net": "^1.11.3",
     "datatables.net-autofill": "^2.3.4",
     "datatables.net-bs4": "^1.10.20",
     "datatables.net-buttons": "^1.6.1",
